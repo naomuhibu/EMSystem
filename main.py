@@ -2,7 +2,7 @@
 
 import os
 
-def clear_screen():
+def clear_screen(): # Clear the terminal screen
     os.system("cls" if os.name == "nt" else "clear")
 
 def display_menu(locations):
@@ -11,7 +11,7 @@ def display_menu(locations):
         print(f"{index}. {location}")
 
 def main():
-    # NZ regions
+    # NZ regions - this data is a placeholder for now and will later be replaced with data from the database
     locations = ["Northland", "Waikato", "Bay of Plenty", "Hawk's Bay", "Taranaki", "Manawatu-Wanganui", "Wellington", "West Coast", "Canterbury", "Otago", "Southland"]
 
     while True:

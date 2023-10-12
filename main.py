@@ -72,11 +72,11 @@ def update_earthquake_data():
 
         # if notifications enabled and selected location true then print warning
             if notifications and selected_location in earthquake_data and earthquake_data[selected_location]:
-                print(f"WARNING: Earthquake detected in {selected_location}")
+                print(f"\nWARNING: Earthquake detected in {selected_location}")
         time.sleep(30)
 
 def view_earthquakes():
-    print("\nLocations witg earthquakes in the last 12 hours:")
+    print("\nLocations with earthquakes in the last 12 hours:")
     for location, has_earthquake in earthquake_data.items():
         if has_earthquake:
             print(f"- {location}")

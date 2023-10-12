@@ -3,6 +3,7 @@ import os
 
 # GLOBAL VARIABLES
 selected_location = ""
+notifications = True
 
 def clear_screen(): # Clear the terminal screen
     os.system("cls" if os.name == "nt" else "clear")
@@ -94,8 +95,35 @@ def change_location(locations):
         print(f"You have changed your location to: {selected_location}")
 
 def change_notifications():
-    # Placeholder function
-    print("Change notification settings\n- Nothing here yet")
+    global notifications
+    while True:
+        if notifications == True:
+            print("Notifications are currently enabled, would you like to disable them?")
+            choice = input("(Y/N): ")
+            clear_screen()
+            if choice.lower() == "y":
+                notifications = False
+                print("Notifications have been disabled")
+                break
+            elif choice.lower() == "n":
+                print("Notifications will remain enabled")
+                break
+            else:
+                print("Invalid choice, please try again")
+        else:
+            print("Notifications are currently disabled, would you like to enable them?")
+            choice = input("(Y/N): ")
+            clear_screen()
+            if choice.lower() == "y":
+                notifications = True
+                print("Notifications have been enabled")
+                break
+            elif choice.lower() == "n":
+                print("Notifications will remain disabled")
+                break
+            else:
+                print("Invalid choice, please try again")
+
 
 def main():
     locations = ["Northland", "Waikato", "Bay of Plenty", "Hawk's Bay", "Taranaki", "Manawatu-Wanganui", "Wellington", "West Coast", "Canterbury", "Otago", "Southland"]

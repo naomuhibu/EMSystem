@@ -70,9 +70,9 @@ def update_earthquake_data():
         for location in locations:
             earthquake_data[location] = random.choice([True, False])
 
-        # if notifications enabled and selected location true then print warning
+            # if notifications enabled and selected location true then print warning
             if notifications and selected_location in earthquake_data and earthquake_data[selected_location]:
-                print(f"\nWARNING: Earthquake detected in {selected_location}")
+                print(f"\nWARNING: Earthquake detected in your location: {selected_location}")
         time.sleep(30)
 
 def view_earthquakes():
@@ -151,6 +151,9 @@ def change_notifications():
 
 def main():
     global locations
+    global selected_location
+    global earthquake_data
+
     locations = ["Northland", "Waikato", "Bay of Plenty", "Hawk's Bay", "Taranaki", "Manawatu-Wanganui", "Wellington", "West Coast", "Canterbury", "Otago", "Southland"]
 
     # Start the background thread to update earthquake data
@@ -161,9 +164,12 @@ def main():
     if choice == 0:
         print("Exiting...")
         return
-    global selected_location
     selected_location = locations[choice - 1]
     print(f"You have selected: {selected_location}")
+
+    # if notifications enabled and selected location true then print warning
+    if notifications and selected_location in earthquake_data and earthquake_data[selected_location]:
+        print(f"\nWARNING: Earthquake detected in your location: {selected_location}")
 
     while True:
         choice = displayMenu_main()

@@ -1,9 +1,14 @@
 # IMPORTS
 import os
+import random
+import threading
+import time
 
 # GLOBAL VARIABLES
+locations = ""
 selected_location = ""
 notifications = True
+earthquake_data = {}
 
 def clear_screen(): # Clear the terminal screen
     os.system("cls" if os.name == "nt" else "clear")
@@ -57,9 +62,25 @@ def displayMenu_settings():
             clear_screen()
             print("Invalid choice, please enter a valid number")
 
+def update_earthquake_data():
+    global earthquake_data
+    global notifications
+    global selected_location
+    while True:
+        for location in locations:
+            earthquake_data[location] = random.choice([True, False])
+
+        # if notifications enabled and selected location true then print warning
+            if notifications and selected_location in earthquake_data and earthquake_data[selected_location]:
+                print(f"WARNING: Earthquake detected in {selected_location}")
+        time.sleep(10)
+
 def view_earthquakes():
-    # Placeholder function
-    print("View last 12hr earthquakes\n- Nothing here yet")
+    print("\nLocations witg earthquakes in the last 12 hours:")
+    for location, has_earthquake in earthquake_data.items():
+        if has_earthquake:
+            print(f"- {location}")
+
 
 def report_earthquake():
     while True:
@@ -126,7 +147,11 @@ def change_notifications():
 
 
 def main():
+    global locations
     locations = ["Northland", "Waikato", "Bay of Plenty", "Hawk's Bay", "Taranaki", "Manawatu-Wanganui", "Wellington", "West Coast", "Canterbury", "Otago", "Southland"]
+
+    # Start the background thread to update earthquake data
+    threading.Thread(target=update_earthquake_data, daemon=True).start()
 
     choice = displayMenu_locations(locations)
     clear_screen()

@@ -73,7 +73,7 @@ def update_earthquake_data():
         # if notifications enabled and selected location true then print warning
             if notifications and selected_location in earthquake_data and earthquake_data[selected_location]:
                 print(f"WARNING: Earthquake detected in {selected_location}")
-        time.sleep(10)
+        time.sleep(30)
 
 def view_earthquakes():
     print("\nLocations witg earthquakes in the last 12 hours:")
@@ -83,6 +83,8 @@ def view_earthquakes():
 
 
 def report_earthquake():
+    global earthquake_data
+    global selected_location
     while True:
         print("\nHow strong does it feel?")
         print("1. Weak")
@@ -96,7 +98,8 @@ def report_earthquake():
                 # Send report
                 newReport = selected_location + " " + str(choice)
                 print(f"Report Sent:\nLocation: {selected_location}\nStrength: {choice}")
-                print
+                # set location to true
+                earthquake_data[selected_location] = True
                 return
             else:
                 clear_screen()

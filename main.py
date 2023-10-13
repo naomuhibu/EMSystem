@@ -118,6 +118,8 @@ def report_earthquake():
                 # set location to true
                 earthquake_data[selected_location] = True
                 return
+            elif choice == 0:
+                break
             else:
                 #clear_screen()
                 print("Invalid choice, please try again")

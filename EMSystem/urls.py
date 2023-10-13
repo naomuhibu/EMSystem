@@ -21,4 +21,5 @@ from EMSystem import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('seismicIntensity/', views.Seismic_list)
+    path('seismicIntensity/<int:id>', views.Seismic_detail)
 ]

@@ -10,10 +10,11 @@ selected_location = ""
 notifications = True
 earthquake_data = {}
 
+# FUNCTIONS
 def clear_screen(): # Clear the terminal screen
     os.system("cls" if os.name == "nt" else "clear")
 
-def displayHeader():
+def displayHeader(): # Display the header
     clear_screen()
     print("Earthquake Early Warning System")
     print("================================")
@@ -21,7 +22,7 @@ def displayHeader():
     if notifications and selected_location in earthquake_data and earthquake_data[selected_location]:
         print(f"\n\033[1m\033[31mWARNING: Earthquake detected in your region.\033[0m")
 
-def displayMenu_locations(locations):
+def displayMenu_locations(locations): # Display the locations menu
     while True:
         print("\nSelect your location:")
         for index, location in enumerate(locations, 1):
@@ -31,13 +32,11 @@ def displayMenu_locations(locations):
             if 0 <= choice <= len(locations):
                 return choice
             else:
-                #clear_screen()
                 print("Invalid choice, please try again")
         except ValueError:
-            #clear_screen()
             print("Invalid choice, please enter a valid number")
 
-def displayMenu_main():
+def displayMenu_main(): # Display the main menu
     displayHeader()
     while True:
         print("\nSelect an option:")
@@ -49,13 +48,11 @@ def displayMenu_main():
             if 0 <= choice <= 3:
                 return choice
             else:
-                #clear_screen()
                 print("Invalid choice, please try again")
         except ValueError:
-            #clear_screen()
             print("Invalid choice, please enter a valid number")
 
-def displayMenu_settings():
+def displayMenu_settings(): # Display the settings menu
     displayHeader()
     while True:
         print("\nSelect an option:")
@@ -66,13 +63,11 @@ def displayMenu_settings():
             if 0 <= choice <= 2:
                 return choice
             else:
-                #clear_screen()
                 print("Invalid choice, please try again")
         except ValueError:
-            #clear_screen()
             print("Invalid choice, please enter a valid number")
 
-def update_earthquake_data():
+def update_earthquake_data():   # Update the earthquake data every 30 seconds
     global earthquake_data
     global notifications
     global selected_location
@@ -85,7 +80,7 @@ def update_earthquake_data():
                 print(f"\n\033[1m\033[31mWARNING: Earthquake detected in your region.\033[0m")
         time.sleep(30)
 
-def view_earthquakes():
+def view_earthquakes(): # View the current earthquakes
     displayHeader()
     while True:
         print("\nLocations with earthquakes in the last 12 hours:")
@@ -93,11 +88,11 @@ def view_earthquakes():
             if has_earthquake:
                 print(f"- {location}")
         # press any key to continue
-        input("\nPress any key to continue...")
+        input("\nPress any key to continue...") #FIXME: This is a hacky way to pause the program, find a better way to do this
         break
 
 
-def report_earthquake():
+def report_earthquake():    # Report an earthquake at current location
     global earthquake_data
     global selected_location
 
@@ -110,7 +105,6 @@ def report_earthquake():
         print("4. Severe")
         try:
             choice = int(input("\nEnter your choice (or 0 to go back): "))
-            #clear_screen()
             if 1 <= choice <= 4:
                 # Send report
                 newReport = selected_location + " " + str(choice)
@@ -121,25 +115,22 @@ def report_earthquake():
             elif choice == 0:
                 break
             else:
-                #clear_screen()
                 print("Invalid choice, please try again")
         except ValueError:
-            #clear_screen()
             print("Invalid choice, please enter a valid number")
 
 
-def change_location(locations):
+def change_location(locations): # Change the current location
     # Reuse the displayMenu_locations function
     displayHeader()
     choice = displayMenu_locations(locations)
-    #clear_screen()
     if choice != 0:
         global selected_location
         selected_location = locations[choice - 1]
 
 
 
-def change_notifications():
+def change_notifications(): # Change the notification settings
     global notifications
 
     displayHeader()
@@ -160,7 +151,6 @@ def change_notifications():
         else:
             print("Notifications are currently disabled, would you like to enable them?")
             choice = input("(Y/N): ")
-            #clear_screen()
             if choice.lower() == "y":
                 notifications = True
                 print("Notifications have been enabled")
@@ -170,6 +160,9 @@ def change_notifications():
                 break
             else:
                 print("Invalid choice, please try again")
+
+        input("\nPress any key to continue...") #FIXME: This is a hacky way to pause the program, find a better way to do this
+        break
 
 
 def main():
@@ -183,7 +176,6 @@ def main():
     threading.Thread(target=update_earthquake_data, daemon=True).start()
 
     choice = displayMenu_locations(locations)
-    #clear_screen()
     if choice == 0:
         print("Exiting...")
         return
@@ -196,7 +188,6 @@ def main():
 
     while True:
         choice = displayMenu_main()
-        #clear_screen()
         if choice == 0:
             clear_screen()
             print("Exiting...")
@@ -207,7 +198,6 @@ def main():
             report_earthquake()
         elif choice == 3:
             choice = displayMenu_settings()
-            #clear_screen()
             if choice == 1:
                 change_location(locations)
             elif choice == 2:

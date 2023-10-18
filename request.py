@@ -2,6 +2,10 @@
 import requests
 import re
 import ast
+import math
+
+# Approximate central coordinates for each location.
+
 
 # Fetch raw data
 def fetchRawEarthquakeData():
@@ -37,13 +41,34 @@ def extractData():
                     extractedData.append([coords[0], coords[1], mmi])
             return extractedData
 
-def calculateDistance(coords1, coords2):
-    # Calculate the distance between two coordinates
-    return
+def calculateDistance(coord1, coord2):
+    # Calculate the distance between two coordinates - Haversine formula
 
-def getNearestLocation(coords):
+    # Radius of the Earth in kilometers
+    R = 6371.0
+
+    # Convert coordinates from degrees to radians
+    lon1, lat1 = math.radians(coord1[0]), math.radians(coord1[1])
+    lon2, lat2 = math.radians(coord2[0]), math.radians(coord2[1])
+
+    # Differences in coordinates
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+
+    # Haversine formula
+    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    distance = R * c
+
+    return distance
+
+def getNearestLocation(target_coord, location_coordinates):
     # Find the nearest location to a given coordinate
-    return
+    # Calculate the distance to each location
+    distances = {location: calculateDistance(target_coord, coords) for location, coords in location_coordinates.items()}
+
+    # Return the location with the shortest distance
+    return min(distances, key=distances.get)
 
 def convertToActiveLocations():
     # Convert the data into a list of active locations

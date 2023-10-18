@@ -1,6 +1,7 @@
 # IMPORTS
 import requests
 import re
+import ast
 
 # Fetch raw data
 def fetchRawEarthquakeData():
@@ -26,13 +27,15 @@ def extractData():
         print("Successfully get data")
 
         # Parsing the JSON data
+        extractedData = []
         if "features" in data:
             for feature in data["features"]:
                 if "geometry" in feature and "properties" in feature:
                     coordinates = feature["geometry"]["coordinates"]
+                    coords = ast.literal_eval(str(coordinates))
                     mmi = feature["properties"]["mmi"]
-                    print(f"Coordinates: {coordinates}, MMI: {mmi}")
-    return
+                    extractedData.append([coords[0], coords[1], mmi])
+            return extractedData
 
 def calculateDistance(coords1, coords2):
     # Calculate the distance between two coordinates

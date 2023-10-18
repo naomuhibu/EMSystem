@@ -1,6 +1,5 @@
 # IMPORTS
 import os
-import random
 import threading
 import time
 
@@ -72,12 +71,8 @@ def update_earthquake_data():   # Update the earthquake data every 30 seconds
     global notifications
     global selected_location
     while True:
-        for location in locations:
-            earthquake_data[location] = random.choice([True, False])
-
-            # if notifications enabled and selected location true then print warning
-            if notifications and selected_location in earthquake_data and earthquake_data[selected_location]:
-                print(f"\n\033[1m\033[31mWARNING: Earthquake detected in your region.\033[0m")
+        # Fetch the earthquake data
+        print("Fetching earthquake data...")
         time.sleep(30)
 
 def view_earthquakes(): # View the current earthquakes

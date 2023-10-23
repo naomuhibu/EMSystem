@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from EMSystem import views
+from .views import SeismicDataList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('seismicIntensity/', views.Seismic_list),
     path('seismicIntensity/<int:id>/', views.Seismic_Detail),
+    path('seismicIntensity/', views.Seismic_list),
+    path('seismic_data/', views.SeismicDataList, name='seismic_data_list')
 ]

@@ -1,8 +1,9 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 class SeismicIntensity(models.Model):
-    place_name = models.CharField(max_length=200)
-    intensity = models.IntegerField()
+    coordinates = models.PointField()  # Field for coordinates
+    mmi = models.IntegerField()  # Field for MMI data
+    date_time = models.DateTimeField(auto_now_add=True)  # the data created date and time
 
     def __str__(self):
-        return f"{self.place_name} - Intensity: {self.intensity}"
+        return f"Coordinates: {self.coordinates} - MMI: {self.mmi} - Date and Time: {self.date_time}"

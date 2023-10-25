@@ -12,7 +12,7 @@ def fetchRawEarthquakeData():
     # Fetch raw data from the API
     print("Fetching earthquake data...")
     try:
-        response = requests.get("https://api.geonet.org.nz/intensity?type=measured")
+        response = requests.get("https://api.geonet.org.nz/quake?MMI=3")
         if response.status_code == 200:
             data = response.json()
             return data
@@ -41,9 +41,8 @@ def extractData():
                     extractedData.append([coords[0], coords[1], mmi])
             return extractedData
 
+# Calculate the distance between two coordinates - Haversine formula
 def calculateDistance(coord1, coord2):
-    # Calculate the distance between two coordinates - Haversine formula
-
     # Radius of the Earth in kilometers
     R = 6371.0
 
@@ -63,12 +62,17 @@ def calculateDistance(coord1, coord2):
     return distance
 
 def getNearestLocation(target_coord, location_coordinates):
-    # Find the nearest location to a given coordinate
-    # Calculate the distance to each location
-    distances = {location: calculateDistance(target_coord, coords) for location, coords in location_coordinates.items()}
+    min_distance = float('inf')
+    closest_loc = None
 
-    # Return the location with the shortest distance
-    return min(distances, key=distances.get)
+    for location, location_coordinates in location_coordinates.items():
+        distance = calculateDistance(target_coord, location_coordinates)
+
+        if distance < min_distance:
+            min_distance = distance
+            closest_loc = location
+
+    return closest_loc
 
 def convertToActiveLocations():
     # Convert the data into a list of active locations

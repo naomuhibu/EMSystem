@@ -2,6 +2,7 @@
 import os
 import threading
 import time
+from request import convertToActiveLocations
 
 # GLOBAL VARIABLES
 locations = ""
@@ -73,6 +74,14 @@ def update_earthquake_data():   # Update the earthquake data every 30 seconds
     while True:
         # Fetch the earthquake data
         print("Fetching earthquake data...")
+        activeLocations = []
+        activeLocations = convertToActiveLocations()
+
+        # print(f'{activeLocations}')
+        for locations in activeLocations:
+            print(f'{locations}')
+            # for each location in activeLocations set to true in earthquake data
+            earthquake_data[locations] = True
         time.sleep(30)
 
 def view_earthquakes(): # View the current earthquakes

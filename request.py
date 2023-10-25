@@ -5,12 +5,25 @@ import ast
 import math
 
 # Approximate central coordinates for each location.
+location_coordinates = {
+    "Northland": [-35.7251, 174.3237],  # Whangarei
+    "Waikato": [-37.7870, 175.2793],  # Hamilton
+    "Bay of Plenty": [-37.6878, 176.1651],  # Tauranga
+    "Hawk's Bay": [-39.6395, 176.8492],  # Hastings
+    "Taranaki": [-39.0556, 174.0756],  # New Plymouth
+    "Manawatu-Wanganui": [-40.3523, 175.6082],  # Palmerston North
+    "Wellington": [-41.2865, 174.7762],  # Wellington
+    "West Coast": [-42.4574, 171.2108],  # Greymouth
+    "Canterbury": [-43.5321, 172.6362],  # Christchurch
+    "Otago": [-45.8788, 170.5020],  # Dunedin
+    "Southland": [-46.4132, 168.3538]  # Invercargill
+}
 
 
 # Fetch raw data
 def fetchRawEarthquakeData():
     # Fetch raw data from the API
-    print("Fetching earthquake data...")
+    # print("Fetching earthquake data...")
     try:
         response = requests.get("https://api.geonet.org.nz/quake?MMI=3")
         if response.status_code == 200:
@@ -28,7 +41,7 @@ def extractData():
     data = fetchRawEarthquakeData()
 
     if data is not None:
-        print("Successfully get data")
+        # print("Successfully got data")
 
         # Parsing the JSON data
         extractedData = []
@@ -76,4 +89,16 @@ def getNearestLocation(target_coord, location_coordinates):
 
 def convertToActiveLocations():
     # Convert the data into a list of active locations
-    return
+    extractedData = []
+    extractedData = extractData()
+
+    activeLocations = []
+
+    # Check active locations and set to true
+    for each in extractedData:
+        # Check if location already set to active
+        thisActiveLocation = getNearestLocation([each[0], each[1]], location_coordinates)
+        if thisActiveLocation not in activeLocations:
+            activeLocations.append(thisActiveLocation)
+
+    return activeLocations

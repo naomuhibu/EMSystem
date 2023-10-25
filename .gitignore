@@ -1,2 +1,4 @@
 # .gitignore
 venv
+__pycache__/request.cpython-311.pyc
+tempRequest.py

@@ -73,13 +73,11 @@ def update_earthquake_data():   # Update the earthquake data every 30 seconds
     global selected_location
     while True:
         # Fetch the earthquake data
-        print("Fetching earthquake data...")
         activeLocations = []
         activeLocations = convertToActiveLocations()
 
         # print(f'{activeLocations}')
         for locations in activeLocations:
-            print(f'{locations}')
             # for each location in activeLocations set to true in earthquake data
             earthquake_data[locations] = True
         time.sleep(30)

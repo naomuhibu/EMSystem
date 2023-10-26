@@ -39,7 +39,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.gis',
     'rest_framework',
-    'EMSystem',
+    'rest_framework_gis',
+    'EMSystem.apps.EMSystemConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,11 +83,14 @@ WSGI_APPLICATION = 'EMSystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+DATABASES = {   #PostGIS
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',  #setting engine
+        'NAME': 'geonetdb',  #database name
+        'USER': 'naomimurachi',     #user name
+        'HOST':'localhost',     #host name
+        'PASSWORD': 'yoobee', #password
+    },
 }
 
 # Password validation

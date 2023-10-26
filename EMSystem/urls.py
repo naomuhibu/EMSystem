@@ -14,14 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.contrib.gis import admin
+from django.urls import include, path
 from EMSystem import views
-from .views import SeismicDataList
+from .views import Seismic_list, Seismic_Details
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('seismicIntensity/<int:id>/', views.Seismic_Detail),
     path('seismicIntensity/', views.Seismic_list),
-    path('seismic_data/', views.SeismicDataList, name='seismic_data_list')
+    path('seismicIntensity/<int:id>', views.Seismic_Details),
 ]

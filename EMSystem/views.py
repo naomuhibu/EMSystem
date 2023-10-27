@@ -4,51 +4,14 @@ from datetime import datetime
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
+from .models import NZregionalcouncil
+from .serializers import NZregionalcouncilSerializer, SeismicSerializer
 
-from EMSystem.serializers import SeismicSerializer
+class NZRegionalCouncilViewSet(viewsets.ModelViewSet):
+    queryset = NZregionalcouncil.objects.all()
+    serializer_class = NZregionalcouncilSerializer
 
-'''
-@api_view(['GET'])
-def Seismic_list(request):
-    if request.method == 'GET':
-        # Define the API endpoint for GeoNet earthquake data
-        api_url = "https://quakesearch.geonet.org.nz/fdsnws/event/1/query"
-
-        # Define the parameters for the query
-        params = {
-            "format": "geojson",
-            "starttime": "2016-11-13T11:00:00",
-            "endtime": "2016-11-14T11:00:00",
-            "latitude": -42.693,
-            "longitude": 173.022,
-            "maxradius": 0.5,
-            "minmagnitude": 5,
-        }
-
-        # Send a GET request to the GeoNet API
-        response = requests.get(api_url, params=params)
-
-        if response.status_code == 200:
-            data = response.json()
-            earthquake_events = []
-
-            for feature in data["features"]:
-                properties = feature["properties"]
-                event_info = {
-                    "time": datetime.utcfromtimestamp(properties["time"] / 1000),
-                    "latitude": properties["lat"],
-                    "longitude": properties["lon"],
-                    "magnitude": properties["mag"],
-                    "magnitude_type": properties["magType"],
-                }
-                earthquake_events.append(event_info)
-
-            return JsonResponse({"EarthquakeEvents": earthquake_events})
-        else:
-            return JsonResponse({"EarthquakeEvents": []})
-
-    return JsonResponse({"EarthquakeEvents": []})
-'''
 api_view(['GET', 'POST'])
 def Seismic_list(request):
     if request.method == 'GET':

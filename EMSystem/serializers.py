@@ -1,17 +1,21 @@
-from rest_framework import serializers
+from rest_framework import serializers,viewsets
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 #from django.core.serializers import serialize
 from .models import SeismicIntensity
-import json
 from EMSystem.models import NZregionalcouncil
+#import json
 
 class NZregionalcouncilSerializer(GeoFeatureModelSerializer):
-    """ A class to serialize locations as GeoJSON compatible data """
-
+    # A class to serialize locations as GeoJSON compatible data
     class Meta:
         model = NZregionalcouncil
-        geo_field = "location"
+        #geo_field = "location"
         fields = '__all__'
+
+class NZRegionalCouncilViewSet(viewsets.ModelViewSet):
+    queryset = NZregionalcouncil.objects.all()
+    serializer_class = NZregionalcouncilSerializer
+
 '''
 class NZregionalcouncil(serialize.Model):
   

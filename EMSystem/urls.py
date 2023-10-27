@@ -16,11 +16,15 @@ Including another URLconf
 """
 from django.contrib.gis import admin
 from django.urls import include, path
-from EMSystem import views
-from .views import Seismic_list, Seismic_Details
+from .views import Seismic_list, Seismic_Details, NZRegionalCouncilViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'nzregionalcouncil', NZRegionalCouncilViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('seismicIntensity/', views.Seismic_list),
-    path('seismicIntensity/<int:id>', views.Seismic_Details),
+    path('seismicIntensity/',Seismic_list),
+    path('seismicIntensity/<int:id>',Seismic_Details),
+    path('nzregionalcouncil/', include(router.urls)),
 ]

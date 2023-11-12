@@ -23,7 +23,7 @@ The Earthquake Monitor System Application is designed to provide real-time monit
 - **Thierry Gibbons:** Developer, UI/UX Designer
 - **Naomi Murachi:** Data Management, GIS Specialist
 
-## Installation
+### Usage
 ### Main(Django rest flamework demo) & ems_mapper Branch(GeoDjango rest flamework demo)
 1. Clone the repository.
 2. cd into the repository.

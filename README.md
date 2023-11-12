@@ -23,11 +23,16 @@ The Earthquake Monitor System Application is designed to provide real-time monit
 - **Thierry Gibbons:** Developer, UI/UX Designer
 - **Naomi Murachi:** Data Management, GIS Specialist
 
+## Installation
+- pip install django djangorestframework
+- pip install django djangorestframework-gis
+- pip install django-leaflet
+
 ## Usage
-### Main(Django rest flamework demo) & ems_mapper Branch(GeoDjango rest flamework demo)
+### Main(Django REST flamework demo) & ems_mapper Branch(GeoDjango REST flamework demo)
 1. Clone the repository.
 2. cd into the repository.
-3. Run `python3 -m venv venv` to create a virtual environment.
+3. Run `python3 -m venv venv(env)` to create a virtual environment.
 4. Run `source venv/bin/activate` to activate the virtual environment.
 5. Run `pip install -r requirements.txt` to install the required packages.
 6. Run `python3 manage.py runserver` to start the server.

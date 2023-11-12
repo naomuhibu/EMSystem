@@ -4,13 +4,13 @@
 The Earthquake Monitor System Application is designed to provide real-time monitoring and alerts for seismic activities. Developed as part of the Bachelor of Software Engineering program, this application integrates various tools and frameworks to deliver accurate and timely earthquake data.
 
 # Requirement
-pyenv 3.9.7
-asgiref 3.7.2
-Django 4.2.7
-psycopg2 2.9.9
-psycopg2-binary 2.9.9
-sqlparse 0.4.4
-typing_extensions 4.8.0
+-pyenv 3.9.7
+-asgiref 3.7.2
+-Django 4.2.7
+-psycopg2 2.9.9
+-psycopg2-binary 2.9.9
+-sqlparse 0.4.4
+-typing_extensions 4.8.0
 
 ## Features
 - Real-time earthquake monitoring
@@ -24,7 +24,7 @@ typing_extensions 4.8.0
 - **Naomi Murachi:** Data Management, GIS Specialist
 
 ## Installation
-### Main(Django rest flamework demo) and ems_mapper Branch(GeoDjango rest flamework demo)
+### Main(Django rest flamework demo) ###ems_mapper Branch(GeoDjango rest flamework demo)
 1. Clone the repository.
 2. cd into the repository.
 3. Run `python3 -m venv venv` to create a virtual environment.

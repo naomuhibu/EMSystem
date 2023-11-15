@@ -32,8 +32,8 @@ The Earthquake Monitor System Application is designed to provide real-time monit
 ### Main(Django REST flamework demo) & ems_mapper Branch(GeoDjango REST flamework demo)
 1. Clone the repository.
 2. cd into the repository.
-3. Run `python3 -m venv venv(env)` to create a virtual environment.
-4. Run `source venv/bin/activate` to activate the virtual environment.
+3. Run `python3 -m venv venv(or env)` to create a virtual environment.
+4. Run `source venv(or env)/bin/activate` to activate the virtual environment.
 5. Run `pip install -r requirements.txt` to install the required packages.
 6. Run `python3 manage.py runserver` to start the server.
 7. Open `localhost:8000` in your browser to view the application.

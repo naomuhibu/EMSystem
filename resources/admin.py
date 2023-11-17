@@ -1,12 +1,11 @@
 from django.contrib import admin
-from django.contrib.gis import admin
+from django.contrib.gis import admin as gis_admin
 from .models import SeismicIntensity, Earthquake
-# Register your models here.
+
+@admin.register(Earthquake)
+class EarthquakeAdmin(gis_admin.OSMGeoAdmin):
+   pass
 
 @admin.register(SeismicIntensity)
 class IntensityAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Earthquake)
-class EarthquakeAdmin(admin.OSMGeoAdmin):
     pass

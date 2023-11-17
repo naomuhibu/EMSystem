@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'resources',
     'rest_framework',
     'rest_framework_gis',
+    'requests'
 ]
 
 MIDDLEWARE = [

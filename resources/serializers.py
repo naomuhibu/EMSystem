@@ -1,19 +1,16 @@
-from .models import Earthquake, SeismicIntensity
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
-from rest_framework_gis.fields import GeometryField
+from .models import Earthquake, SeismicIntensity
 
-class SeismicSerializer(serializers.ModelSerializer):
+class SeismicIntensitySerializer(serializers.ModelSerializer):
     class Meta:
         model = SeismicIntensity
-        fields = ('name',)
+        fields = ('mmi', 'scale_level', 'description')
 
 class EarthquakeSerializer(GeoFeatureModelSerializer):
-
-    seismic = SeismicSerializer(many=True)
+   # seismic = SeismicIntensitySerializer(many=True, read_only=True)
 
     class Meta:
         model = Earthquake
-        geo_field = "location"
-        fields = ('name','seismic','street_name')
-        
+        geo_field = 'coordinates'
+        fields = ('location_name','mmi')

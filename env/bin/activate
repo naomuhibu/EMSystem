@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/naomimurachi/GeoDjango/ems/ems_mapper/env"
+VIRTUAL_ENV="/Users/naomimurachi/GeoDjango/ems copy/ems_mapper/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

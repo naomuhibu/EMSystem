@@ -4,21 +4,21 @@
 The Earthquake Monitor System Application is designed to provide real-time monitoring and alerts for seismic activities. Developed as part of the Bachelor of Software Engineering program, this application integrates various tools and frameworks to deliver accurate and timely earthquake data.
 
 # Requirement
-asgiref==3.7.2
-certifi==2023.7.22
-charset-normalizer==3.3.2
-Django==4.2.7
-djangorestframework==3.14.0
-djangorestframework-gis==1.0
-idna==3.4
-psycopg2==2.9.9
-psycopg2-binary==2.9.9
-pyproj==3.6.1
-pytz==2023.3.post1
-requests==2.31.0
-sqlparse==0.4.4
-typing_extensions==4.8.0
-urllib3==2.0.7
+- asgiref==3.7.2
+- certifi==2023.7.22
+- charset-normalizer==3.3.2
+- Django==4.2.7
+- djangorestframework==3.14.0
+- djangorestframework-gis==1.0
+- idna==3.4
+- psycopg2==2.9.9
+- psycopg2-binary==2.9.9
+- pyproj==3.6.1
+- pytz==2023.3.post1
+- requests==2.31.0
+- sqlparse==0.4.4
+- typing_extensions==4.8.0
+- urllib3==2.0.7
 
 ## Features
 - Real-time earthquake monitoring

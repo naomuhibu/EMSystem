@@ -23,8 +23,8 @@ The Earthquake Monitor System Application is designed to provide real-time monit
 ## Features
 - Real-time earthquake monitoring
 - User-friendly interface
-- GIS integration with GeoDjango and PostGIS
-- Data management with Django and postgreSQL
+- GIS integration with GeoDjango framework with PostGIS
+- Data management with Django REST framework with postgreSQL
 - Front-end development with React JS
 
 ## Contribution
@@ -44,8 +44,10 @@ The Earthquake Monitor System Application is designed to provide real-time monit
 2. cd into the repository.
 3. Run `python3 -m venv venv(or env)` to create a virtual environment.
 4. Run `source venv(or env)/bin/activate` to activate the virtual environment.
-5. Run `python3 manage.py runserver` to start the server.
-6. Open `localhost:8000` in your browser to view the application.
+5. Run 'python3 manage.py makemigrations'
+6. Run 'python3 manage.py migrate'
+7. Run `python3 manage.py runserver` to start the server.
+8. Open `localhost:8000` in your browser to view the application.
 
 ### BarebonesTerminalApplication Branch
 1. Clone the repository.

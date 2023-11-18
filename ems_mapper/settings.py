@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-3^z*n^!&t_r5zyayvr82)svxwn*f66+csa19g()z&g!chj8e*3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ems_remote','remotehost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -83,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',  #setting engine
         'NAME': "ems",  #database name
-        'USER': "naomimurachi",  #user name
+        'USER': "postgres",  #user name
         'PASSWORD': "yoobee",   #password
-        'HOST': "ems_remote",     #host name
+        'HOST': "localhost",  #host name
         'PORT': "5432",     #host name
     }
 }

@@ -1,1 +1,2 @@
+# TYPE  DATABASE        USER            ADDRESS   
 host    all             all             219.89.225.230/32       md5

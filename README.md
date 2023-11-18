@@ -47,8 +47,9 @@ The Earthquake Monitor System Application is designed to provide real-time monit
 4. Run `source venv(or env)/bin/activate` to activate the virtual environment.
 5. Run `python3 manage.py makemigrations` to record database model changes in the database migration file for Django
 6. Run `python3 manage.py migrate` to update the database with model changes.
-7. Run `python3 manage.py runserver` to start the server.
-8. Open `localhost:8000` in your browser to view the application.
+7. Run `python3 manage.py createsuperuser` to create an administrator account. Log in to the Django administrator site.
+8. Run `python3 manage.py runserver` to start the server.
+9. Open `localhost:8000` in your browser to view the application.
 
 ### BarebonesTerminalApplication Branch
 1. Clone the repository.

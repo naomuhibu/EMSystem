@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-3^z*n^!&t_r5zyayvr82)svxwn*f66+csa19g()z&g!chj8e*3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ems_remote','remotehost']
 
 
 # Application definition
@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': "ems",  #database name
         'USER': "naomimurachi",  #user name
         'PASSWORD': "yoobee",   #password
-        'HOST': "localhost",     #host name
+        'HOST': "ems_remote",     #host name
         'PORT': "5432",     #host name
     }
 }

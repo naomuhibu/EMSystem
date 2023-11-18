@@ -27,7 +27,7 @@ The Earthquake Monitor System Application is designed to provide real-time monit
 - pip install django djangorestframework
 - pip install django djangorestframework-gis
 - pip install django-leaflet
--[PostosgreSQL](https://www.postgresql.org)
+- [PostosgreSQL](https://www.postgresql.org)
 
 ## Usage
 ### Main(Django REST flamework demo) & ems_mapper Branch(GeoDjango REST flamework demo)

@@ -32,8 +32,38 @@
         var earthquakes = L.geoJson(null, {
             pointToLayer: function(feature, latlng) {
                 var coordinates = L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
-                console.log("Marker Coordinates:", coordinates);
-                return L.marker(coordinates);
+                var marker = L.marker(coordinates);
+                var mmi =feature.properties.mmi;
+                
+                // Define a function to map mmi to circle radius
+                function getCircleRadius(mmi) {
+                    return mmi * 10000;
+                }
+
+                // Add click event handler for markers
+                marker.on('click', function() {
+                    var locationName = feature.properties.location_name;
+                    var mmi = feature.properties.mmi;
+                    var today = new Date();
+                    var popupContent = 
+                        "<strong>Date and Time:</strong> " + today +
+                        "<br><strong>Location:</strong> " + locationName + 
+                        "<br><strong>Earthquake Intensity(MMI):</strong> " + mmi;
+                                      
+                    var popup = L.popup()
+                        .setLatLng(coordinates)
+                        .setContent(popupContent)
+                        .openOn(map);
+
+                    var circle = L.circle(coordinates, {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5,
+                        radius: getCircleRadius(mmi)
+                    }).addTo(map);
+                });
+
+                return marker;
             }
         });
 

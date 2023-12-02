@@ -1,4 +1,4 @@
-#!/Users/naomimurachi/GeoDjango/ems/ems_mapper/env/bin/python
+#!/Users/naomimurachi/ems/ems_mapper/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

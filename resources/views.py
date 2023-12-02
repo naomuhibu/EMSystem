@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse, JsonResponse
 #from django.contrib.auth.models import auth
 #from django.contrib.auth import authenticate, login
-from rest_framework import generics
+from rest_framework import generics, permissions
 from .models import Earthquake
 from .serializers import EarthquakeSerializer
 #from .forms import CreateUserForm, LoginForm
@@ -24,13 +24,13 @@ class EarthquakeList(generics.ListCreateAPIView):
 
 class EarthquakeAPI(generics.ListAPIView):
     queryset = Earthquake.objects.all()
-    serializer_class = EarthquakeSerializer
+    serializer_class = EarthquakeSerializer  
 
-'''
 class EarthquakeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Earthquake.objects.all()
     serializer_class = EarthquakeSerializer
-
+    
+'''
 def Register(request):
     form = CreateUserForm()
 

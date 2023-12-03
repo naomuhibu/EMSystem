@@ -14,10 +14,10 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
-  
+
 </head>
 <body>
-    <div id="map" style="height: 500px; width: 100%;"></div>
+    <div id="map" style="height: 100vh; width: 100%;"></div>
     <script>
         var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
@@ -41,7 +41,8 @@
                 }
 
                 // Add click event handler for markers
-                marker.on('click', function() {
+                marker.on('click', function(e) {
+                    map.setView(e.latlng, 11);
                     var locationName = feature.properties.location_name;
                     var mmi = feature.properties.mmi;
                     var today = new Date();
@@ -66,7 +67,7 @@
                 return marker;
             }
         });
-
+        
         map.addLayer(earthquakes);
 
         // Set the URL dynamically using a JavaScript variable
